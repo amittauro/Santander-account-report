@@ -1,0 +1,53 @@
+From:�fake�to�fake
+
+Account:�XXXX XXXX XXXX FAKE
+
+Date:�fake
+Description:�CARD PAYMENT TO fake1,fake, RATE 1.00/GBP ON fake
+Amount:�-6.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake2AMZN,fake, RATE 1.00/GBP ON fake
+Amount:�-15.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake3AMAZON,fake, RATE 1.00/GBP ON fake
+Amount:�-40.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake4Amazon,fake, RATE 1.00/GBP ON fake
+Amount:�-100.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake5,fake, RATE 1.00/GBP ON fake
+Amount:�200.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake6,fake, RATE 1.00/GBP ON fake
+Amount:�-30.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake7,fake, RATE 1.00/GBP ON fake
+Amount:�-10.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake7,fake, RATE 1.00/GBP ON fake
+Amount:�-15.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake8,fake, RATE 1.00/GBP ON fake
+Amount:�-60.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake9,fake, RATE 1.00/GBP ON fake
+Amount:�-600.75�
+Balance:�balance�
