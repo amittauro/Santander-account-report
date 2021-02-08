@@ -24,4 +24,4 @@ npm test
 
 ## Example Output
 
-![Santander Report](https://i.imgur.com/dEkuNi9.png)
+See the mockup.png file for an example of the display
