@@ -5,14 +5,24 @@ import './css/MonthlyExpenses.css'
 class MonthlyExpenses extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { value: '', monthlyExpense: null, description: '' }
+    this.state = { value: '', monthlyExpense: null, description: '', salary: '', rent: '' }
 
     this.handleChange = this.handleChange.bind(this)
+    this.handleRent = this.handleRent.bind(this)
+    this.handleSalary = this.handleSalary.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
   }
 
   handleChange (event) {
     this.setState({ value: event.target.value })
+  }
+
+  handleSalary (event) {
+    this.setState({ salary: event.target.value })
+  }
+
+  handleRent (event) {
+    this.setState({ rent: event.target.value })
   }
 
   handleSubmit (event) {
@@ -53,11 +63,12 @@ class MonthlyExpenses extends React.Component {
   }
 
   living () {
-    return this.underHundred() + 660
+    return this.underHundred() + parseInt(this.state.rent)
   }
 
   twentyRule () {
-    return `${Math.floor(100 - ((this.living() / 2050) * 100))}%`
+    const salary = parseInt(this.state.salary)
+    return `${Math.floor(100 - ((this.living() / salary) * 100))}%`
   }
 
   underHundred () {
@@ -96,7 +107,6 @@ class MonthlyExpenses extends React.Component {
   }
 
   monthlyExpense () {
-    // const expenses = this.props.expenses.map(transaction => transaction.Amount)
     return this.calculateTotal(this.withdrawals())
   }
 
@@ -119,6 +129,14 @@ class MonthlyExpenses extends React.Component {
             <option value="Living">Living</option>
             <option value="20 Rule">20 Rule</option>
           </select>
+        </label>
+        <label>
+          Salary:
+          <input type="text" value={this.state.salary} onChange={this.handleSalary} />
+        </label>
+        <label>
+          Rent:
+          <input type="text" value={this.state.rent} onChange={this.handleRent} />
         </label>
       <input type="submit" value="Submit" />
     </form><br></br>
