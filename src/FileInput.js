@@ -1,6 +1,6 @@
 import React from 'react'
 import Parser from './Parser'
-import './File.css'
+import './css/File.css'
 
 class FileInput extends React.Component {
   constructor (props) {
@@ -44,7 +44,7 @@ class FileInput extends React.Component {
       <h2>Upload a text file of your monthly transactions and submit to view results </h2>
         <form role="form" onSubmit={this.handleSubmit}>
           <input id="file" type="file" name="" value={this.state.value} onChange={this.handleChange}/><br></br>
-          <input type="submit" name="" value="submit" />
+          <input type="submit" name="submit" value="submit" />
         </form>
       </div>
       )

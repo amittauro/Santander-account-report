@@ -24,7 +24,7 @@ Balance:�balance�
 
 Date:�fake
 Description:�CARD PAYMENT TO fake5,fake, RATE 1.00/GBP ON fake
-Amount:�200.75�
+Amount:�-200.75�
 Balance:�balance�
 
 Date:�fake

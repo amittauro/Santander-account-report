@@ -1,6 +1,6 @@
 import PropTypes from 'prop-types'
 import React from 'react'
-import './Table.css'
+import './css/Table.css'
 
 function TopTenExpenses (props) {
   const expenses = props.expenses

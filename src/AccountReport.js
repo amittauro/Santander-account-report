@@ -22,19 +22,6 @@ class AccountReport extends React.Component {
     return this.sortedTransactions().slice(0, 10)
   }
 
-  withdrawals () {
-    const expenses = this.sortedTransactions().map(transaction => transaction.Amount)
-    const n = expenses.length
-    let index
-    for (let i = 0; i < n; i++) {
-      if (expenses[i] > 0) {
-        index = i
-        break
-      }
-    }
-    return expenses.slice(0, index)
-  }
-
   sortedTransactions () {
     return this.state.transactions.sort(function (a, b) {
       return a.Amount - b.Amount

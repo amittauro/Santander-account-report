@@ -1,6 +1,6 @@
 import { render, screen } from '@testing-library/react'
-import TopTenExpenses from './TopTenExpenses'
-import { mockTopTen } from './mockTopTen'
+import TopTenExpenses from '../TopTenExpenses'
+import { mockTopTen } from '../mocks/mockTopTen'
 
 test('renders learn react link', () => {
   render(<TopTenExpenses expenses={mockTopTen}/>)

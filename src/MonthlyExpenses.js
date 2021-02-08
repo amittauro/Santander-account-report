@@ -1,6 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
-import './MonthlyExpenses.css'
+import './css/MonthlyExpenses.css'
 
 class MonthlyExpenses extends React.Component {
   constructor (props) {
@@ -61,8 +61,6 @@ class MonthlyExpenses extends React.Component {
   }
 
   underHundred () {
-    console.log(this.props.expenses)
-    // const expenses = this.props.expenses.map(transaction => transaction.Amount)
     const expenses = this.withdrawals()
     const n = expenses.length; let j
     for (let i = 0; i < n; i++) {
