@@ -3,7 +3,7 @@ import React from 'react'
 import './css/Table.css'
 
 function TopTenExpenses (props) {
-  const expenses = props.expenses
+  const expenses = props.expenses.slice(0, 10)
   const listExpenses = expenses.map((expense, index) => {
     return (
     <tr key={index + 1}>

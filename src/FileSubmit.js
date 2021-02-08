@@ -1,8 +1,10 @@
 import React from 'react'
-import Parser from './Parser'
+import { Parser } from './Parser'
+import TopTenExpenses from './TopTenExpenses'
+import MonthlyExpenses from './MonthlyExpenses'
 import './css/File.css'
 
-class FileInput extends React.Component {
+class FileSubmit extends React.Component {
   constructor (props) {
     super(props)
     this.state = { data: '', isLoaded: false, file: null, value: '' }
@@ -35,8 +37,12 @@ class FileInput extends React.Component {
   render () {
     const { isLoaded, data } = this.state
     if (isLoaded) {
+      const expenses = new Parser(data).sortedTransactions()
       return (
-        <Parser rawData={data} />
+        <div>
+          <TopTenExpenses expenses={expenses} />
+          <MonthlyExpenses expenses={expenses} />
+        </div>
       )
     } else {
       return (
@@ -52,4 +58,4 @@ class FileInput extends React.Component {
   }
 }
 
-export default FileInput
+export default FileSubmit

@@ -1,26 +1,25 @@
-import AccountReport from './AccountReport'
-import PropTypes from 'prop-types'
-import React from 'react'
+function Parser (rawData) {
+  this._rawData = rawData
 
-class Parser extends React.Component {
-  constructor (props) {
-    super(props)
-    this.state = { data: this.props.rawData }
+  this.sortedTransactions = () => {
+    return this._processStatement().sort(function (a, b) {
+      return a.Amount - b.Amount
+    })
   }
 
-  processStatement () {
+  this._processStatement = () => {
     const transactions = []
     let i = 0
-    const n = this.dataArray().length - 1
+    const n = this._dataArray().length - 1
     while (i < n) {
-      const transaction = this.dataArray().slice(i, i + 4)
-      transactions.push(this.processSingleTransaction(transaction))
+      const transaction = this._dataArray().slice(i, i + 4)
+      transactions.push(this._processSingleTransaction(transaction))
       i += 4
     }
     return transactions
   }
 
-  processSingleTransaction (transaction) {
+  this._processSingleTransaction = (transaction) => {
     const singleTransaction = {}
     transaction.forEach((element) => {
       const pairs = element.split(':')
@@ -35,13 +34,13 @@ class Parser extends React.Component {
     return singleTransaction
   }
 
-  dataArray () {
-    return this.removeWhitespacesFromArray().slice(2)
+  this._dataArray = () => {
+    return this._removeWhitespacesFromArray().slice(2)
   }
 
-  removeWhitespacesFromArray () {
+  this._removeWhitespacesFromArray = () => {
     const arrayWithoutWhitespaces = []
-    this.statementArray().forEach((element) => {
+    this._statementArray().forEach((element) => {
       if (/\S/.test(element)) {
         arrayWithoutWhitespaces.push(element)
       }
@@ -49,27 +48,15 @@ class Parser extends React.Component {
     return arrayWithoutWhitespaces
   }
 
-  statementArray () {
-    return this.parseData().split(/\n+/)
+  this._statementArray = () => {
+    return this._parseData().split(/\n+/)
   }
 
-  parseData () {
-    return this.state.data
+  this._parseData = () => {
+    return this._rawData
       .replace(/�/g, '')
       .replace(/CARD PAYMENT TO /g, '')
   }
-
-  render () {
-    return (
-      <div>
-        <AccountReport transactions={this.processStatement()} />
-      </div>
-    )
-  }
 }
 
-Parser.propTypes = {
-  rawData: PropTypes.string
-}
-
-export default Parser
+export { Parser }
