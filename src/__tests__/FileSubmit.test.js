@@ -12,15 +12,15 @@ test('renders file uploading', () => {
 
 test('when submitting file renders result data', async () => {
   window.FileReader = class {
-  readAsText() {
-    this.onload({
-      target: {
-        result: mockRawData
+    readAsText () {
+      this.onload({
+        target: {
+          result: mockRawData
         }
       })
     }
-  };
-  jest.mock("../Parser")
+  }
+  jest.mock('../Parser')
   render(<FileSubmit />)
   const fileSubmit = screen.getByRole('button', { name: /submit/i })
   userEvent.click(fileSubmit)
