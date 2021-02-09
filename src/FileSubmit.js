@@ -33,39 +33,6 @@ class FileSubmit extends React.Component {
     }
     reader.readAsText(file)
   }
-    // const reader = new FileReader()
-    // new Blob(file).text().then((text) => {
-    //   console.log(text)
-    //   this.setState({
-    //     data: text,
-    //     isLoaded: true
-    //   })
-    // })
-    // this.loadText(file)
-    //   .then((text) => {
-    //     this.setState({
-    //       data: text,
-    //       isLoaded: true
-    //     })
-    //   })
-    // const reader = new FileReader()
-    // const currentThis = this
-    // reader.onload = function (e) {
-    //   currentThis.setState({
-    //     data: e.target.result,
-    //     isLoaded: true
-    //   })
-    // }
-    // reader.readAsText(file)
-
-  // loadText(file) {
-  //   return new Promise(function(resolve, reject) {
-  //     let reader = new FileReader()
-  //     reader.readAsText(file)
-  //     reader.onload = () => resolve(text);
-  //     reader.onerror = () => reject(new Error('Text load error'));
-  //   });
-  // }
 
   render () {
     const { isLoaded, data } = this.state

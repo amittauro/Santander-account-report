@@ -23,6 +23,10 @@ test('renders monthly spend under 100', async () => {
 test('renders monthly Living expenses', async () => {
   const { getByTestId } = render(<MonthlyExpenses expenses={mockWithdrawals} />)
   fireEvent.change(getByTestId('select'), { target: { value: 'Living' } })
+  const salary = screen.getByLabelText(/Salary:/)
+  userEvent.type(salary, '2050')
+  const rent = screen.getByLabelText(/Rent:/)
+  userEvent.type(rent, '660')
   userEvent.click(screen.getByText('Submit'))
   const text = screen.getByText(/830/)
   expect(text).toBeInTheDocument()
@@ -31,6 +35,10 @@ test('renders monthly Living expenses', async () => {
 test('renders 80 20 rule', async () => {
   const { getByTestId } = render(<MonthlyExpenses expenses={mockWithdrawals} />)
   fireEvent.change(getByTestId('select'), { target: { value: '20 Rule' } })
+  const salary = screen.getByLabelText(/Salary:/)
+  userEvent.type(salary, '2050')
+  const rent = screen.getByLabelText(/Rent:/)
+  userEvent.type(rent, '660')
   userEvent.click(screen.getByText('Submit'))
   const text = screen.getByText(/59%/)
   expect(text).toBeInTheDocument()
