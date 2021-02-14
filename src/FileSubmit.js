@@ -1,13 +1,11 @@
 import React from 'react'
-import { Parser } from './Parser'
-import TopTenExpenses from './TopTenExpenses'
-import MonthlyExpenses from './MonthlyExpenses'
 import './css/File.css'
+import PropTypes from 'prop-types'
 
 class FileSubmit extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { data: '', isLoaded: false, file: null, value: '' }
+    this.state = { file: null, value: '' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -26,36 +24,26 @@ class FileSubmit extends React.Component {
     const reader = new FileReader()
     const currentThis = this
     reader.onload = function (e) {
-      currentThis.setState({
-        data: e.target.result,
-        isLoaded: true
-      })
+      currentThis.props.onFileSubmission(e.target.result)
     }
     reader.readAsText(file)
   }
 
   render () {
-    const { isLoaded, data } = this.state
-    if (isLoaded) {
-      const expenses = new Parser(data).sortedTransactions()
-      return (
-        <div>
-          <TopTenExpenses expenses={expenses} />
-          <MonthlyExpenses expenses={expenses} />
-        </div>
-      )
-    } else {
-      return (
+    return (
       <div>
-      <h2>Upload a text file of your monthly transactions and submit to view results </h2>
-        <form role="form" onSubmit={this.handleSubmit}>
-          <input id="file" type="file" name="" value={this.state.value} onChange={this.handleChange}/><br></br>
-          <input type="submit" name="submit" value="submit" />
-        </form>
+        <h2>Upload a text file of your monthly transactions and submit to view results </h2>
+          <form role="form" onSubmit={this.handleSubmit}>
+            <input id="file" type="file" name="" value={this.state.value} onChange={this.handleChange}/><br></br>
+            <input type="submit" name="submit" value="submit" />
+          </form>
       </div>
-      )
-    }
+    )
   }
+}
+
+FileSubmit.propTypes = {
+  onFileSubmission: PropTypes.func
 }
 
 export default FileSubmit

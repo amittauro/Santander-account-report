@@ -72,33 +72,20 @@ class MonthlyExpenses extends React.Component {
   }
 
   underHundred () {
-    const expenses = this.withdrawals()
-    const n = expenses.length; let j
-    for (let i = 0; i < n; i++) {
-      if (expenses[i] > -100 && j === undefined) {
-        j = i
-        break
-      }
-    }
-    return this.calculateTotal(this.withdrawals().slice(j))
+    const expenses = this.sortedWithdrawals()
+    const indexBelowHundred = expenses.findIndex(amount => amount > -100)
+    return this.calculateTotal(this.sortedWithdrawals().slice(indexBelowHundred))
   }
 
-  withdrawals () {
-    const expenses = this.props.expenses.map(transaction => transaction.Amount)
-    const n = expenses.length
-    let index
-    for (let i = 0; i < n; i++) {
-      if (expenses[i] > 0) {
-        index = i
-        break
-      }
-    }
-    return expenses.slice(0, index)
+  sortedWithdrawals () {
+    const transactions = this.props.sortedTransactions.map(transaction => transaction.Amount)
+    const firstPositiveTransaction = transactions.findIndex(amount => amount > 0)
+    return transactions.slice(0, firstPositiveTransaction)
   }
 
   amazon () {
     const amazon = []
-    this.props.expenses.forEach((element) => {
+    this.props.sortedTransactions.forEach((element) => {
       if (/AMZN/.test(element.Description) || /AMAZON/i.test(element.Description)) {
         amazon.push(element.Amount)
       }
@@ -107,7 +94,7 @@ class MonthlyExpenses extends React.Component {
   }
 
   monthlyExpense () {
-    return this.calculateTotal(this.withdrawals())
+    return this.calculateTotal(this.sortedWithdrawals())
   }
 
   calculateTotal (expenses) {
@@ -147,7 +134,7 @@ class MonthlyExpenses extends React.Component {
 }
 
 MonthlyExpenses.propTypes = {
-  expenses: PropTypes.array
+  sortedTransactions: PropTypes.array
 }
 
 export default MonthlyExpenses
