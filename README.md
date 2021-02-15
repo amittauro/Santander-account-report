@@ -21,7 +21,3 @@ npm test
 
 ## Tech used
 - React
-
-## Example Output
-
-See the mockup.png file for an example of the display
