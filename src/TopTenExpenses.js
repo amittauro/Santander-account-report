@@ -3,8 +3,8 @@ import React from 'react'
 import './css/Table.css'
 
 function TopTenExpenses (props) {
-  const expenses = props.expenses.slice(0, 10)
-  const listExpenses = expenses.map((expense, index) => {
+  const topTenExpenses = props.sortedTransactions.slice(0, 10)
+  const listExpenses = topTenExpenses.map((expense, index) => {
     return (
     <tr key={index + 1}>
         <td>{index + 1}</td>
@@ -16,6 +16,7 @@ function TopTenExpenses (props) {
 
   return (
   <div>
+    <h1>Your Top Ten Expenses</h1>
     <table className="TopTenExpenses">
       <thead>
           <tr>
@@ -33,7 +34,7 @@ function TopTenExpenses (props) {
 }
 
 TopTenExpenses.propTypes = {
-  expenses: PropTypes.array
+  sortedTransactions: PropTypes.array
 }
 
 export default TopTenExpenses

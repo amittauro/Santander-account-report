@@ -1,4 +1,4 @@
-function Parser (rawData) {
+export function Parser (rawData) {
   this._rawData = rawData
 
   this.sortedTransactions = () => {
@@ -58,5 +58,3 @@ function Parser (rawData) {
       .replace(/CARD PAYMENT TO /g, '')
   }
 }
-
-export { Parser }

@@ -4,13 +4,7 @@ import userEvent from '@testing-library/user-event'
 import { Parser } from '../Parser'
 import { mockRawData } from '../mocks/mockRawData'
 
-test('renders file uploading', () => {
-  render(<FileSubmit />)
-  const fileSubmit = screen.getByRole('button', { name: /submit/i })
-  expect(fileSubmit).toBeInTheDocument()
-})
-
-test('when submitting file renders result data', async () => {
+test('when submitting file it provides the app class with the data', async () => {
   window.FileReader = class {
     readAsText () {
       this.onload({
@@ -20,10 +14,10 @@ test('when submitting file renders result data', async () => {
       })
     }
   }
-  jest.mock('../Parser')
-  render(<FileSubmit />)
+  const mockApp = { handleFileSubmit: () => {} }
+  jest.spyOn(mockApp, 'handleFileSubmit')
+  render(<FileSubmit onFileSubmission={mockApp.handleFileSubmit}/>)
   const fileSubmit = screen.getByRole('button', { name: /submit/i })
   userEvent.click(fileSubmit)
-  const element = await waitFor(() => screen.getByText(/Description/))
-  expect(element).toBeInTheDocument()
+  expect(mockApp.handleFileSubmit).toHaveBeenCalledWith(mockRawData)
 })

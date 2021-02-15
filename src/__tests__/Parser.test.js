@@ -1,4 +1,4 @@
-import { Parser } from '../Parser'
+import { Parser } from '../Parser.js'
 import { mockRawData } from '../mocks/mockRawData'
 
 test('it returns a sorted array object of transactions', () => {

@@ -1,8 +1,8 @@
-const mockWithdrawals = [
+const mockTransactions = [
   {
     Date: 'fake',
-    Description: 'fake1',
-    Amount: -1200,
+    Description: 'rent1',
+    Amount: -400,
     Balance: 'balance'
   },
   {
@@ -64,7 +64,13 @@ const mockWithdrawals = [
     Description: 'fake11AMAZON',
     Amount: -10,
     Balance: 'balance'
+  },
+  {
+    Date: 'fake',
+    Description: 'fake12',
+    Amount: 1000,
+    Balance: 'balance'
   }
 ]
 
-export { mockWithdrawals }
+export { mockTransactions }
