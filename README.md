@@ -12,7 +12,7 @@ npm start
 
 You can now go ahead and upload your text file to view the results.
 
-## Testing and code quality
+## Testing
 
 To run tests:
 ```sh
