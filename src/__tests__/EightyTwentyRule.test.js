@@ -7,8 +7,8 @@ window.alert = jest.fn()
 
 test('renders eighty twenty rule result', async () => {
   render(<EightyTwentyRule sortedTransactions={mockEightyTwentyRule} />)
-  const salary = screen.getByLabelText(/Take-home Salary/i)
-  userEvent.type(salary, '1000')
+  const company = screen.getByLabelText(/Company:/i)
+  userEvent.type(company, 'fake company')
   const submit = screen.getByRole('button')
   userEvent.click(submit)
   const text = await waitFor(() => screen.getByText(/43%/))
@@ -18,8 +18,8 @@ test('renders eighty twenty rule result', async () => {
 test('alerts user to enter a valid company', async () => {
   jest.spyOn(window, 'alert')
   render(<EightyTwentyRule sortedTransactions={mockEightyTwentyRule} />)
-  const salary = screen.getByLabelText(/Take-home Salary/i)
-  userEvent.type(salary, '£500')
+  const company = screen.getByLabelText(/Company:/i)
+  userEvent.type(company, 'doesnt exist')
   const submit = screen.getByRole('button')
   userEvent.click(submit)
   expect(window.alert).toHaveBeenCalled()
