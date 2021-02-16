@@ -5,7 +5,7 @@ test('it returns a sorted array object of transactions', () => {
   const parser = new Parser(mockRawData)
   expect(parser.sortedTransactions()[0]).toEqual({
     Date: 'fake',
-    Description: 'fake1',
+    Description: 'CARD PAYMENT TO fake1',
     Amount: -15.75,
     Balance: 'balance'
   })

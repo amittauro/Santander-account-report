@@ -53,8 +53,6 @@ export function Parser (rawData) {
   }
 
   this._parseData = () => {
-    return this._rawData
-      .replace(/�/g, '')
-      .replace(/CARD PAYMENT TO /g, '')
+    return this._rawData.replace(/�/g, '')
   }
 }

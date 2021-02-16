@@ -26,6 +26,11 @@ const mockMonthlyData = [
   'Date:�fake\n',
   'Description:�CARD PAYMENT TO rent1,15.75 GBP, RATE 1.00/GBP ON fake\n',
   'Amount:�-15.75�  \n',
+  'Balance:�balance�',
+  '                                 \n',
+  'Date:�fake\n',
+  'Description:�BANK GIRO CREDIT REF COMPANY EM, EMPLOYEES11111/11\n',
+  'Amount:�1500.75�  \n',
   'Balance:�balance�'
 ].join('')
 
