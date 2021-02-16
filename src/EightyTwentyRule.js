@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 class EightyTwentyRule extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { company: '', eightyTwentyRule: '' }
+    this.state = { salary: '', eightyTwentyRule: '' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -27,18 +27,19 @@ class EightyTwentyRule extends React.Component {
   }
 
   handleChange (event) {
-    this.setState({ company: event.target.value })
+    this.setState({ salary: event.target.value })
   }
 
   handleSubmit (event) {
     event.preventDefault()
-    const company = this.state.company
-    const regEx = new RegExp(company, 'i')
-    const salary = this.props.sortedTransactions.find(transaction => (regEx).test(transaction.Description))
-    const salaryAmount = salary.Amount
-    const livingExpenses = this.debitCardSpendNoBills() + this.rent()
-    const eightyTwentyRule = Math.floor(100 - ((livingExpenses / salaryAmount) * 100))
-    this.setState({ eightyTwentyRule: `${eightyTwentyRule}%` })
+    const salary = this.state.salary
+    if (/\D/.test(salary)) {
+      window.alert('Please enter only numbers for your salary')
+    } else {
+      const livingExpenses = this.debitCardSpendNoBills() + this.rent()
+      const eightyTwentyRule = Math.floor(100 - ((livingExpenses / parseInt(salary)) * 100))
+      this.setState({ eightyTwentyRule: `${eightyTwentyRule}%` })
+    }
   }
 
   render () {
@@ -48,7 +49,7 @@ class EightyTwentyRule extends React.Component {
       Enter the company you work for to find out your savings against take-home salary
       <form onSubmit={this.handleSubmit}>
         <label>
-          Company:
+          Take-home Salary (£):
           <input type="text" value={this.state.company} onChange={this.handleChange} />
         </label>
         <input type="submit" value="Submit" />
