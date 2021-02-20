@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './css/EightyTwentyRule.css'
 
 class EightyTwentyRule extends React.Component {
   constructor (props) {
@@ -20,6 +21,8 @@ class EightyTwentyRule extends React.Component {
     this.props.sortedTransactions.forEach((transaction) => {
       if (/CARD PAYMENT TO/i.test(transaction.Description) && /E.ON/.test(transaction.Description) === false) {
         debitCardSpend.push(transaction)
+      } else if (/EE LIMITED/.test(transaction.Description)) {
+        debitCardSpend.push(transaction)
       }
     })
     const debitCardAmount = debitCardSpend.map(transaction => transaction.Amount)
@@ -36,7 +39,7 @@ class EightyTwentyRule extends React.Component {
     const regEx = new RegExp(company, 'i')
     const salary = this.props.sortedTransactions.find(transaction => (regEx).test(transaction.Description))
     if (salary === undefined || salary.Amount < 0) {
-      window.alert('company doesnt exist in transactions please try again')
+      window.alert('company doesnt exist as an employer please try again')
     } else {
       const salaryAmount = salary.Amount
       const livingExpenses = this.debitCardSpendNoBills() + this.rent()
@@ -49,16 +52,20 @@ class EightyTwentyRule extends React.Component {
     return (
       <div>
       <h2>80/20 Rule</h2>
-      Enter the company you work for to find out your savings against take-home salary
+      Enter the company you work for below and find out how much of your take-home salary you saved this month.
       <form onSubmit={this.handleSubmit}>
-        <label>
+        <div className='form-row'>
+        <label className='company'>
           Company:
           <input type="text" value={this.state.company} onChange={this.handleChange} />
         </label>
+        </div>
+        <div className='form-row'>
         <input type="submit" value="Submit" />
+        </div>
       </form>
-      <h4>Savings against salary: {this.state.eightyTwentyRule}</h4>
-      This calculator only looks at debit card transactions and does not take into account standing orders or direct debits or bills to E.ON
+      <p className='savings'>Savings against salary: {this.state.eightyTwentyRule}</p>
+      <p className='disclaimer'>*This calculator only looks at debit card transactions and does not take into account standing orders or direct debits or bills to E.ON.</p>
       </div>
     )
   }

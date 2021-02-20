@@ -21,6 +21,7 @@ export function Parser (rawData) {
 
   this._processSingleTransaction = (transaction) => {
     const singleTransaction = {}
+    // getkeyvaluefrompairstring
     transaction.forEach((element) => {
       const pairs = element.split(':')
       if (pairs[0] === 'Description') {
@@ -31,6 +32,7 @@ export function Parser (rawData) {
       }
       singleTransaction[pairs[0]] = pairs[1]
     })
+    // clean up object
     return singleTransaction
   }
 

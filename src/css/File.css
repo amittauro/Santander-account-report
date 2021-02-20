@@ -1,5 +1,21 @@
-#file {
-  text-align: center;
-  margin-left: 100px;
-  margin-bottom: 10px;
+.title {
+  color: black;
+}
+
+.form-row {
+  margin: 1.3em;
+}
+
+label {
+  display: block;
+  margin: 0.5em 0;
+  font-weight: bold;
+}
+
+#file-submit {
+  width:20%;
+}
+
+#upload-file {
+  margin-left: 220px
 }

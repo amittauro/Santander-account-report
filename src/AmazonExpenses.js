@@ -1,5 +1,6 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import './css/Amazon.css'
 
 function AmazonExpenses (props) {
   let amazonAmount = 0
@@ -10,8 +11,8 @@ function AmazonExpenses (props) {
   })
 
   return (
-    <div>
-      <h4>Amazon Expenses</h4>
+    <div className='amazon'>
+      <h3>Amazon Expenses</h3>
       This month you spent £{-amazonAmount} at Amazon
     </div>
   )

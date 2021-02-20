@@ -32,10 +32,14 @@ class FileSubmit extends React.Component {
   render () {
     return (
       <div>
-        <h2>Upload a text file of your monthly transactions and submit to view results </h2>
+        <h3 className='title'>Upload a text file of your monthly statement and submit to view results </h3>
           <form role="form" onSubmit={this.handleSubmit}>
-            <input id="file" type="file" name="" value={this.state.value} onChange={this.handleChange}/><br></br>
-            <input type="submit" name="submit" value="submit" />
+            <div className='form-row'>
+            <input id='upload-file' type="file" name="" value={this.state.value} onChange={this.handleChange}/>
+            </div>
+            <div className='form-row'>
+            <input id='file-submit' type="submit" name="submit" value="Submit" />
+            </div>
           </form>
       </div>
     )

@@ -16,7 +16,7 @@ function TopTenExpenses (props) {
 
   return (
   <div>
-    <h1>Your Top Ten Expenses</h1>
+    <h2>Your Top Ten Expenses</h2>
     <table className="TopTenExpenses">
       <thead>
           <tr>

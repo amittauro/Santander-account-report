@@ -33,7 +33,7 @@ Amount:�-30.75�
 Balance:�balance�
 
 Date:�fake
-Description:�CARD PAYMENT TO fake7,fake, RATE 1.00/GBP ON fake
+Description:�CARD PAYMENT TO fake10,fake, RATE 1.00/GBP ON fake
 Amount:�-10.75�
 Balance:�balance�
 
@@ -48,6 +48,11 @@ Amount:�-60.75�
 Balance:�balance�
 
 Date:�fake
-Description:�CARD PAYMENT TO fake9,fake, RATE 1.00/GBP ON fake
+Description:�CARD PAYMENT TO fake rent,fake, RATE 1.00/GBP ON fake
 Amount:�-600.75�
+Balance:�balance�
+
+Date:�fake
+Description:�CARD PAYMENT TO fake company,fake, RATE 1.00/GBP ON fake
+Amount:�1000.75�
 Balance:�balance�

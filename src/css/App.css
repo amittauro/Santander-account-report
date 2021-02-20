@@ -2,10 +2,23 @@
   text-align: center;
 }
 
-#file {
-  text-align: center;
-}
-
 h1 {
   text-align: center;
+  color: red;
+}
+
+h2 {
+  text-align: center;
+  color: red;
+}
+
+h3 {
+  text-align: center;
+  color: red;
+}
+
+div {
+  max-width: 40em;
+  margin: 2em auto;
+  font-family: sans-serif;
 }
