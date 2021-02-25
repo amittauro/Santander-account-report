@@ -1,5 +1,5 @@
 const mockRawData = [
-  'From:�fake�to�fake\n',
+  'From:�01/01/2000�to�30/01/2000\n',
   '                                 \n',
   'Account:�XXXX XXXX XXXX fake\n',
   '                                 \n',

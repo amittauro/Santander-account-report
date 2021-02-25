@@ -4,7 +4,7 @@ import './css/Amazon.css'
 
 function AmazonExpenses (props) {
   let amazonAmount = 0
-  props.sortedTransactions.forEach((element) => {
+  props.transactions.forEach((element) => {
     if (/AMZN/.test(element.Description) || /AMAZON/i.test(element.Description)) {
       amazonAmount += element.Amount
     }
@@ -13,13 +13,13 @@ function AmazonExpenses (props) {
   return (
     <div className='amazon'>
       <h3>Amazon Expenses</h3>
-      This month you spent £{-amazonAmount} at Amazon
+      This month you spent £{Math.round(-amazonAmount)} at Amazon
     </div>
   )
 }
 
 AmazonExpenses.propTypes = {
-  sortedTransactions: PropTypes.array
+  transactions: PropTypes.array
 }
 
 export default AmazonExpenses

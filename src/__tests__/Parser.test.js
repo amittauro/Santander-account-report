@@ -1,13 +1,23 @@
 import { Parser } from '../Parser.js'
 import { mockRawData } from '../mocks/mockRawData'
 
-test('it returns a sorted array object of transactions', () => {
+test('it returns an array transactions as objects', () => {
   const parser = new Parser(mockRawData)
-  expect(parser.sortedTransactions()[0]).toEqual({
+  expect(parser.processStatement()[0]).toEqual({
     Date: 'fake',
-    Description: 'CARD PAYMENT TO fake1',
-    Amount: -15.75,
+    Description: 'CARD PAYMENT TO fake',
+    Amount: -6.75,
     Balance: 'balance'
   })
-  expect(parser.sortedTransactions().length).toEqual(2)
+  expect(parser.processStatement().length).toEqual(2)
+})
+
+test('it processes the start date', () => {
+  const parser = new Parser(mockRawData)
+  expect(parser.processStartDate()).toEqual('January 2000')
+})
+
+test('it processes the end date', () => {
+  const parser = new Parser(mockRawData)
+  expect(parser.processEndDate()).toEqual('January 2000')
 })

@@ -6,7 +6,7 @@ import userEvent from '@testing-library/user-event'
 window.alert = jest.fn()
 
 test('renders eighty twenty rule result', async () => {
-  render(<EightyTwentyRule sortedTransactions={mockEightyTwentyRule} />)
+  render(<EightyTwentyRule transactions={mockEightyTwentyRule} />)
   const company = screen.getByLabelText(/Company:/i)
   userEvent.type(company, 'fake company')
   const submit = screen.getByRole('button')
@@ -17,7 +17,7 @@ test('renders eighty twenty rule result', async () => {
 
 test('alerts user to enter a valid company', async () => {
   jest.spyOn(window, 'alert')
-  render(<EightyTwentyRule sortedTransactions={mockEightyTwentyRule} />)
+  render(<EightyTwentyRule transactions={mockEightyTwentyRule} />)
   const company = screen.getByLabelText(/Company:/i)
   userEvent.type(company, 'doesnt exist')
   const submit = screen.getByRole('button')

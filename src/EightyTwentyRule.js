@@ -12,13 +12,13 @@ class EightyTwentyRule extends React.Component {
   }
 
   rent () {
-    const rent = this.props.sortedTransactions.find(transaction => /rent/i.test(transaction.Description))
+    const rent = this.props.transactions.find(transaction => /rent/i.test(transaction.Description))
     return -rent.Amount
   }
 
   debitCardSpendNoBills () {
     const debitCardSpend = []
-    this.props.sortedTransactions.forEach((transaction) => {
+    this.props.transactions.forEach((transaction) => {
       if (/CARD PAYMENT TO/i.test(transaction.Description) && /E.ON/.test(transaction.Description) === false) {
         debitCardSpend.push(transaction)
       } else if (/EE LIMITED/.test(transaction.Description)) {
@@ -37,7 +37,7 @@ class EightyTwentyRule extends React.Component {
     event.preventDefault()
     const company = this.state.company
     const regEx = new RegExp(company, 'i')
-    const salary = this.props.sortedTransactions.find(transaction => (regEx).test(transaction.Description))
+    const salary = this.props.transactions.find(transaction => (regEx).test(transaction.Description))
     if (salary === undefined || salary.Amount < 0) {
       window.alert('company doesnt exist as an employer please try again')
     } else {
@@ -72,7 +72,7 @@ class EightyTwentyRule extends React.Component {
 }
 
 EightyTwentyRule.propTypes = {
-  sortedTransactions: PropTypes.array
+  transactions: PropTypes.array
 }
 
 export default EightyTwentyRule

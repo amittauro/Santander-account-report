@@ -4,6 +4,7 @@ import FileSubmit from './FileSubmit'
 import TopTenExpenses from './TopTenExpenses'
 import AmazonExpenses from './AmazonExpenses'
 import EightyTwentyRule from './EightyTwentyRule'
+import Date from './Date'
 import { Parser } from './Parser.js'
 
 class App extends React.Component {
@@ -31,13 +32,17 @@ class App extends React.Component {
         </div>
       )
     } else {
-      const sortedTransactions = new Parser(data).sortedTransactions()
+      const parser = new Parser(data)
+      const transactions = parser.processStatement()
+      const startDate = parser.processStartDate()
+      const endDate = parser.processEndDate()
       return (
         <div>
           <h1>Santander Monthly Report</h1>
-          <TopTenExpenses sortedTransactions={sortedTransactions} />
-          <EightyTwentyRule sortedTransactions={sortedTransactions} />
-          <AmazonExpenses sortedTransactions={sortedTransactions} />
+          <Date startDate={startDate} endDate={endDate} />
+          <TopTenExpenses transactions={transactions} />
+          <EightyTwentyRule transactions={transactions} />
+          <AmazonExpenses transactions={transactions} />
         </div>
       )
     }

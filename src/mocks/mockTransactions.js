@@ -2,13 +2,13 @@ const mockTransactions = [
   {
     Date: 'fake',
     Description: 'rent1',
-    Amount: -400,
+    Amount: -200,
     Balance: 'balance'
   },
   {
     Date: 'fake',
     Description: 'fake2',
-    Amount: -200,
+    Amount: -400,
     Balance: 'balance'
   },
   {

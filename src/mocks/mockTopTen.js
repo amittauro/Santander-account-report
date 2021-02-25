@@ -2,7 +2,7 @@ const mockTopTen = [
   {
     Date: 'fake',
     Description: 'fake1',
-    Amount: -100,
+    Amount: -20,
     Balance: 'balance'
   },
   {
@@ -32,7 +32,7 @@ const mockTopTen = [
   {
     Date: 'fake',
     Description: 'fake6',
-    Amount: -50,
+    Amount: -100,
     Balance: 'balance'
   },
   {

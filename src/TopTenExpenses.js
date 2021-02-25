@@ -3,7 +3,10 @@ import React from 'react'
 import './css/Table.css'
 
 function TopTenExpenses (props) {
-  const topTenExpenses = props.sortedTransactions.slice(0, 10)
+  const sortedTransactions = props.transactions.sort(function (a, b) {
+    return a.Amount - b.Amount
+  })
+  const topTenExpenses = sortedTransactions.slice(0, 10)
   const listExpenses = topTenExpenses.map((expense, index) => {
     return (
     <tr key={index + 1}>
@@ -34,7 +37,7 @@ function TopTenExpenses (props) {
 }
 
 TopTenExpenses.propTypes = {
-  sortedTransactions: PropTypes.array
+  transactions: PropTypes.array
 }
 
 export default TopTenExpenses

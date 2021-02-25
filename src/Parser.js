@@ -1,13 +1,29 @@
 export function Parser (rawData) {
   this._rawData = rawData
 
-  this.sortedTransactions = () => {
-    return this._processStatement().sort(function (a, b) {
-      return a.Amount - b.Amount
+  this.processStartDate = () => {
+    const startDate = new Date(this._processDate()[0])
+    const options = { month: 'long', year: 'numeric' }
+    return startDate.toLocaleString('default', options)
+  }
+
+  this.processEndDate = () => {
+    const endDate = new Date(this._processDate()[0])
+    const options = { month: 'long', year: 'numeric' }
+    return endDate.toLocaleString('default', options)
+  }
+
+  this._processDate = () => {
+    let date = this._statementArray()[0]
+    const separator = date.indexOf(':')
+    date = date.slice(separator + 1)
+    const dates = date.split('to')
+    return dates.map((date) => {
+      return date.split('/').reverse().join('-')
     })
   }
 
-  this._processStatement = () => {
+  this.processStatement = () => {
     const transactions = []
     let i = 0
     const n = this._dataArray().length - 1
