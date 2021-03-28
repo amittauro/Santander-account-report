@@ -5,7 +5,7 @@ import './css/EightyTwentyRule.css'
 class EightyTwentyRule extends React.Component {
   constructor (props) {
     super(props)
-    this.state = { company: '', eightyTwentyRule: '' }
+    this.state = { company: '', eightyTwentyRule: '', livingExpenses: '' }
 
     this.handleChange = this.handleChange.bind(this)
     this.handleSubmit = this.handleSubmit.bind(this)
@@ -43,6 +43,7 @@ class EightyTwentyRule extends React.Component {
     } else {
       const salaryAmount = salary.Amount
       const livingExpenses = this.debitCardSpendNoBills() + this.rent()
+      this.setState({ livingExpenses: `£${Math.round(livingExpenses)}` })
       const eightyTwentyRule = Math.floor(100 - ((livingExpenses / salaryAmount) * 100))
       this.setState({ eightyTwentyRule: `${eightyTwentyRule}%` })
     }
@@ -64,6 +65,7 @@ class EightyTwentyRule extends React.Component {
         <input type="submit" value="Submit" />
         </div>
       </form>
+      <p className='savings'>Living Expenses: {this.state.livingExpenses}</p>
       <p className='savings'>Savings against salary: {this.state.eightyTwentyRule}</p>
       <p className='disclaimer'>*This calculator only looks at debit card transactions and does not take into account standing orders or direct debits or bills to E.ON.</p>
       </div>

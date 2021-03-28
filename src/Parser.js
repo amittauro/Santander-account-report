@@ -41,8 +41,8 @@ export function Parser (rawData) {
     transaction.forEach((element) => {
       const pairs = element.split(':')
       if (pairs[0] === 'Description') {
-        const place = pairs[1]
-        pairs[1] = place.substring(0, place.indexOf(','))
+        // const place = pairs[1]
+        // pairs[1] = place.substring(0, place.indexOf(','))
       } else if (pairs[0] === 'Amount') {
         pairs[1] = parseFloat(pairs[1])
       }
